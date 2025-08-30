@@ -9938,7 +9938,7 @@ const {
 
 const axiosInstance = axios.create({
   baseURL: "https://prize-service.onrender.com/api/v1",
-  timeout: 1e4,
+  timeout: 1e5,
   headers: {
     "Content-Type": "application/json"
   }
