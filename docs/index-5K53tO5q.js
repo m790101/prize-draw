@@ -10168,98 +10168,102 @@ const prizeTotalNum = computed(() => {
 });
 
 return (_ctx, _cache) => {
-  return (openBlock(), createElementBlock("main", _hoisted_1, [
-    createBaseVNode("section", _hoisted_2, [
-      _cache[1] || (_cache[1] = createBaseVNode("h2", { class: "text-2xl font-semibold text-gray-800 mb-4" }, "Add New Prize", -1)),
-      createBaseVNode("div", _hoisted_3, [
-        withDirectives(createBaseVNode("textarea", {
-          type: "text",
-          id: "prizeInput",
-          placeholder: "Enter prize names (one per line)...\nExample:\niPhone 15\n$100 Gift Card\nWireless Headphones",
-          class: "flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none min-h-48",
-          "onUpdate:modelValue": _cache[0] || (_cache[0] = $event => ((prizeInput).value = $event))
-        }, null, 512), [
-          [vModelText, prizeInput.value]
-        ]),
-        createBaseVNode("button", {
-          class: "px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium",
-          onClick: addPrize
-        }, " Add Prize ")
-      ])
-    ]),
-    createBaseVNode("section", _hoisted_4, [
-      createBaseVNode("div", _hoisted_5, [
-        _cache[2] || (_cache[2] = createBaseVNode("h2", { class: "text-2xl font-semibold text-gray-800" }, "Prizes", -1)),
-        createBaseVNode("span", _hoisted_6, toDisplayString(prizeTotalNum.value) + " prizes", 1)
+  return (openBlock(), createElementBlock(Fragment, null, [
+    _cache[7] || (_cache[7] = createStaticVNode("<header class=\"bg-blue-400 shadow-lg\"><div class=\"container mx-auto lg:max-w-(--breakpoint-lg) px-3 md:px-6 py-4\"><div class=\"flex items-center gap-3\"><div class=\"text-white text-2xl\">🎯</div><h1 class=\"text-white text-2xl font-bold\">Prize Draw</h1></div></div></header>", 1)),
+    createBaseVNode("main", _hoisted_1, [
+      createBaseVNode("section", _hoisted_2, [
+        _cache[1] || (_cache[1] = createBaseVNode("h2", { class: "text-2xl font-semibold text-gray-800 mb-4" }, "Add New Prize", -1)),
+        createBaseVNode("div", _hoisted_3, [
+          withDirectives(createBaseVNode("textarea", {
+            type: "text",
+            id: "prizeInput",
+            placeholder: "Enter prize names (one per line)...\nExample:\niPhone 15\n$100 Gift Card\nWireless Headphones",
+            class: "flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none min-h-48",
+            "onUpdate:modelValue": _cache[0] || (_cache[0] = $event => ((prizeInput).value = $event))
+          }, null, 512), [
+            [vModelText, prizeInput.value]
+          ]),
+          createBaseVNode("button", {
+            class: "px-6 py-3 bg-blue-400 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium",
+            onClick: addPrize
+          }, " Add Prize ")
+        ])
       ]),
-      createBaseVNode("div", _hoisted_7, [
-        createBaseVNode("ul", null, [
-          (openBlock(true), createElementBlock(Fragment, null, renderList(prizeList.value, (prize, index) => {
-            return (openBlock(), createElementBlock("li", { key: index }, toDisplayString(prize), 1))
-          }), 128))
+      createBaseVNode("section", _hoisted_4, [
+        createBaseVNode("div", _hoisted_5, [
+          _cache[2] || (_cache[2] = createBaseVNode("h2", { class: "text-2xl font-semibold text-gray-800" }, "Prizes", -1)),
+          createBaseVNode("span", _hoisted_6, toDisplayString(prizeTotalNum.value) + " prizes", 1)
         ]),
-        (prizeList.value.length === 0)
-          ? (openBlock(), createElementBlock("p", _hoisted_8, " No prizes added yet. Add some prizes to get started! "))
+        createBaseVNode("div", _hoisted_7, [
+          createBaseVNode("ul", null, [
+            (openBlock(true), createElementBlock(Fragment, null, renderList(prizeList.value, (prize, index) => {
+              return (openBlock(), createElementBlock("li", { key: index }, toDisplayString(prize), 1))
+            }), 128))
+          ]),
+          (prizeList.value.length === 0)
+            ? (openBlock(), createElementBlock("p", _hoisted_8, " No prizes added yet. Add some prizes to get started! "))
+            : createCommentVNode("", true)
+        ]),
+        (prizeList.value.length > 0)
+          ? (openBlock(), createElementBlock("div", _hoisted_9, [
+              createBaseVNode("button", {
+                class: "mt-3 px-6 py-3 bg-blue-500 w-full text-white rounded-lg hover:bg-blue-600 transition-colors font-medium",
+                onClick: clearPrizes
+              }, " Clear Prizes ")
+            ]))
           : createCommentVNode("", true)
       ]),
-      (prizeList.value.length > 0)
-        ? (openBlock(), createElementBlock("div", _hoisted_9, [
-            createBaseVNode("button", {
-              class: "mt-3 px-6 py-3 bg-blue-500 w-full text-white rounded-lg hover:bg-blue-600 transition-colors font-medium",
-              onClick: clearPrizes
-            }, " Clear Prizes ")
-          ]))
-        : createCommentVNode("", true)
+      createBaseVNode("div", _hoisted_10, [
+        _cache[6] || (_cache[6] = createBaseVNode("h2", { class: "text-2xl font-semibold text-gray-800 mb-4" }, "Draw Winner", -1)),
+        createBaseVNode("div", _hoisted_11, [
+          (!sessionReady.value)
+            ? (openBlock(), createElementBlock("button", {
+                key: 0,
+                id: "drawButton",
+                onClick: startSession,
+                class: "px-8 py-4 bg-gradient-to-r from-red-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all font-bold text-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mx-auto min-w-[200px]",
+                disabled: prizeList.value.length === 0
+              }, [
+                (isStartingSession.value)
+                  ? (openBlock(), createBlock(Loader, { key: 0 }))
+                  : createCommentVNode("", true),
+                (isStartingSession.value)
+                  ? (openBlock(), createElementBlock("span", _hoisted_13, "Starting Session..."))
+                  : (openBlock(), createElementBlock("span", _hoisted_14, "🚀 Press to Start Session"))
+              ], 8, _hoisted_12))
+            : createCommentVNode("", true),
+          (sessionReady.value)
+            ? (openBlock(), createElementBlock("button", {
+                key: 1,
+                id: "drawButton",
+                onClick: setWinner,
+                class: "px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all font-bold text-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+              }, " 🎲 Draw! "))
+            : createCommentVNode("", true),
+          _cache[3] || (_cache[3] = createBaseVNode("p", { class: "text-sm text-gray-500 mt-2" }, "Need at least 1 prize to draw", -1))
+        ]),
+        createVNode(Skeleton, {
+          isLoading: !winner.value && drawLoading.value
+        }, null, 8, ["isLoading"]),
+        (winner.value)
+          ? (openBlock(), createElementBlock("div", _hoisted_15, [
+              createBaseVNode("div", _hoisted_16, [
+                _cache[4] || (_cache[4] = createBaseVNode("h3", { class: "text-xl font-bold text-gray-800 mb-2" }, "🎊 Winner! 🎊", -1)),
+                createBaseVNode("div", _hoisted_17, toDisplayString(winner.value), 1),
+                _cache[5] || (_cache[5] = createBaseVNode("p", { class: "px-4 py-2 rounded-lg" }, "press draw button to draw next one", -1))
+              ]),
+              createBaseVNode("div", { class: "flex justify-center mt-5" }, [
+                createBaseVNode("button", {
+                  onClick: reset,
+                  class: "px-6 py-3 bg-red-400 text-white rounded-lg font-bold text-lg shadow-lg disabled:opacity-50"
+                }, "reset all")
+              ])
+            ]))
+          : createCommentVNode("", true)
+      ])
     ]),
-    createBaseVNode("div", _hoisted_10, [
-      _cache[6] || (_cache[6] = createBaseVNode("h2", { class: "text-2xl font-semibold text-gray-800 mb-4" }, "Draw Winner", -1)),
-      createBaseVNode("div", _hoisted_11, [
-        (!sessionReady.value)
-          ? (openBlock(), createElementBlock("button", {
-              key: 0,
-              id: "drawButton",
-              onClick: startSession,
-              class: "px-8 py-4 bg-gradient-to-r from-red-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all font-bold text-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mx-auto min-w-[200px]",
-              disabled: prizeList.value.length === 0
-            }, [
-              (isStartingSession.value)
-                ? (openBlock(), createBlock(Loader, { key: 0 }))
-                : createCommentVNode("", true),
-              (isStartingSession.value)
-                ? (openBlock(), createElementBlock("span", _hoisted_13, "Starting Session..."))
-                : (openBlock(), createElementBlock("span", _hoisted_14, "🚀 Press to Start Session"))
-            ], 8, _hoisted_12))
-          : createCommentVNode("", true),
-        (sessionReady.value)
-          ? (openBlock(), createElementBlock("button", {
-              key: 1,
-              id: "drawButton",
-              onClick: setWinner,
-              class: "px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all font-bold text-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-            }, " 🎲 Draw! "))
-          : createCommentVNode("", true),
-        _cache[3] || (_cache[3] = createBaseVNode("p", { class: "text-sm text-gray-500 mt-2" }, "Need at least 1 prize to draw", -1))
-      ]),
-      createVNode(Skeleton, {
-        isLoading: !winner.value && drawLoading.value
-      }, null, 8, ["isLoading"]),
-      (winner.value)
-        ? (openBlock(), createElementBlock("div", _hoisted_15, [
-            createBaseVNode("div", _hoisted_16, [
-              _cache[4] || (_cache[4] = createBaseVNode("h3", { class: "text-xl font-bold text-gray-800 mb-2" }, "🎊 Winner! 🎊", -1)),
-              createBaseVNode("div", _hoisted_17, toDisplayString(winner.value), 1),
-              _cache[5] || (_cache[5] = createBaseVNode("p", { class: "px-4 py-2 rounded-lg" }, "press draw button to draw next one", -1))
-            ]),
-            createBaseVNode("div", { class: "flex justify-center mt-5" }, [
-              createBaseVNode("button", {
-                onClick: reset,
-                class: "px-6 py-3 bg-red-400 text-white rounded-lg font-bold text-lg shadow-lg disabled:opacity-50"
-              }, "reset all")
-            ])
-          ]))
-        : createCommentVNode("", true)
-    ])
-  ]))
+    _cache[8] || (_cache[8] = createStaticVNode("<footer class=\"bg-gray-800 text-white mt-auto\"><div class=\"container mx-auto lg:max-w-(--breakpoint-lg) px-3 md:px-6 py-8\"><div class=\"text-center\"><div class=\"flex items-center justify-center gap-2 mb-4\"><div class=\"text-2xl\">🎯</div><h3 class=\"text-xl font-bold\">Prize Draw</h3></div><p class=\"text-gray-400 text-sm mb-6\"> The ultimate tool for fair and exciting prize drawings. Create your list, draw winners, and celebrate! </p><p class=\"text-gray-400 text-sm\"> © 2025 Prize Draw. All rights reserved. </p></div></div></footer>", 1))
+  ], 64))
 }
 }
 
