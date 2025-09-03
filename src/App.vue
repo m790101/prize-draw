@@ -1,5 +1,15 @@
 
 <template>
+  <!-- Header -->
+<header class="bg-blue-400 shadow-lg">
+  <div class="container mx-auto lg:max-w-(--breakpoint-lg) px-3 md:px-6 py-4">
+    <div class="flex items-center gap-3">
+      <div class="text-white text-2xl">🎯</div>
+      <h1 class="text-white text-2xl font-bold">Prize Draw</h1>
+    </div>
+  </div>
+</header>
+
   <main
     class="container mx-auto lg:max-w-(--breakpoint-lg) pt-6 md:pt-10 pb-10 md:pb-48 px-3 md:px-6 min-h-screen"
   >
@@ -14,7 +24,7 @@
           v-model="prizeInput"
         />
         <button
-          class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium"
+          class="px-6 py-3 bg-blue-400 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium"
           @click="addPrize"
         >
           Add Prize
@@ -101,6 +111,25 @@
       </div>
     </div>
   </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white mt-auto">
+    <div class="container mx-auto lg:max-w-(--breakpoint-lg) px-3 md:px-6 py-8">
+      <div class="text-center">
+        <div class="flex items-center justify-center gap-2 mb-4">
+          <div class="text-2xl">🎯</div>
+          <h3 class="text-xl font-bold">Prize Draw</h3>
+        </div>
+        <p class="text-gray-400 text-sm mb-6">
+          The ultimate tool for fair and exciting prize drawings. Create your list, draw winners, and celebrate!
+        </p>
+        <p class="text-gray-400 text-sm">
+          © 2025 Prize Draw. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+  
 </template>
 
 
