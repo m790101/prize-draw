@@ -2034,36 +2034,6 @@ function withCtx(fn, ctx = currentRenderingInstance, isNonScopedSlot) {
   renderFnWithContext._d = true;
   return renderFnWithContext;
 }
-function withDirectives(vnode, directives) {
-  if (currentRenderingInstance === null) {
-    return vnode;
-  }
-  const instance = getComponentPublicInstance(currentRenderingInstance);
-  const bindings = vnode.dirs || (vnode.dirs = []);
-  for (let i = 0; i < directives.length; i++) {
-    let [dir, value, arg, modifiers = EMPTY_OBJ] = directives[i];
-    if (dir) {
-      if (isFunction(dir)) {
-        dir = {
-          mounted: dir,
-          updated: dir
-        };
-      }
-      if (dir.deep) {
-        traverse(value);
-      }
-      bindings.push({
-        dir,
-        instance,
-        value,
-        oldValue: void 0,
-        arg,
-        modifiers
-      });
-    }
-  }
-  return vnode;
-}
 function invokeDirectiveHook(vnode, prevVNode, instance, name) {
   const bindings = vnode.dirs;
   const oldBindings = prevVNode && prevVNode.dirs;
@@ -6128,70 +6098,6 @@ function shouldSetAsProp(el, key, value, isSVG) {
   }
   return key in el;
 }
-const getModelAssigner = (vnode) => {
-  const fn = vnode.props["onUpdate:modelValue"] || false;
-  return isArray$1(fn) ? (value) => invokeArrayFns(fn, value) : fn;
-};
-function onCompositionStart(e) {
-  e.target.composing = true;
-}
-function onCompositionEnd(e) {
-  const target = e.target;
-  if (target.composing) {
-    target.composing = false;
-    target.dispatchEvent(new Event("input"));
-  }
-}
-const assignKey = Symbol("_assign");
-const vModelText = {
-  created(el, { modifiers: { lazy, trim, number } }, vnode) {
-    el[assignKey] = getModelAssigner(vnode);
-    const castToNumber = number || vnode.props && vnode.props.type === "number";
-    addEventListener(el, lazy ? "change" : "input", (e) => {
-      if (e.target.composing) return;
-      let domValue = el.value;
-      if (trim) {
-        domValue = domValue.trim();
-      }
-      if (castToNumber) {
-        domValue = looseToNumber(domValue);
-      }
-      el[assignKey](domValue);
-    });
-    if (trim) {
-      addEventListener(el, "change", () => {
-        el.value = el.value.trim();
-      });
-    }
-    if (!lazy) {
-      addEventListener(el, "compositionstart", onCompositionStart);
-      addEventListener(el, "compositionend", onCompositionEnd);
-      addEventListener(el, "change", onCompositionEnd);
-    }
-  },
-  // set value on mounted so it's after min/max for type="range"
-  mounted(el, { value }) {
-    el.value = value == null ? "" : value;
-  },
-  beforeUpdate(el, { value, oldValue, modifiers: { lazy, trim, number } }, vnode) {
-    el[assignKey] = getModelAssigner(vnode);
-    if (el.composing) return;
-    const elValue = (number || el.type === "number") && !/^0\d/.test(el.value) ? looseToNumber(el.value) : el.value;
-    const newValue = value == null ? "" : value;
-    if (elValue === newValue) {
-      return;
-    }
-    if (document.activeElement === el && el.type !== "range") {
-      if (lazy && value === oldValue) {
-        return;
-      }
-      if (trim && el.value.trim() === newValue) {
-        return;
-      }
-    }
-    el.value = newValue;
-  }
-};
 const rendererOptions = /* @__PURE__ */ extend({ patchProp }, nodeOps);
 let renderer;
 function ensureRenderer() {
@@ -8145,6 +8051,25 @@ function extractChangingRecords(to, from) {
   return [leavingRecords, updatingRecords, enteringRecords];
 }
 
+const routes = [
+  {
+    path: "/",
+    name: "Home",
+    // component: () => import('../views/Home.vue')
+    component: () => __vitePreload(() => import('./Restaurant-1szV2lQR.js'),true              ?[]:void 0)
+  }
+  // Example of lazy loading a component
+  // {
+  //   path: '/restaurant',
+  //   name: 'Restaurant',
+  //   component: () => import('../views/Restaurant.vue')
+  // }
+];
+const router = createRouter({
+  history: createWebHistory("/prize-draw/"),
+  routes
+});
+
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
@@ -8158,74 +8083,20 @@ const _sfc_main = {
 };
 
 const _hoisted_1 = { id: "app" };
-const _hoisted_2 = { class: "bg-blue-400 shadow-lg" };
-const _hoisted_3 = { class: "container mx-auto lg:max-w-(--breakpoint-lg) px-3 md:px-6 py-4" };
-const _hoisted_4 = { class: "flex items-center gap-3" };
-const _hoisted_5 = { class: "ml-6" };
 
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_router_link = resolveComponent("router-link");
   const _component_router_view = resolveComponent("router-view");
 
   return (openBlock(), createElementBlock("div", _hoisted_1, [
-    createBaseVNode("header", _hoisted_2, [
-      createBaseVNode("div", _hoisted_3, [
-        createBaseVNode("div", _hoisted_4, [
-          _cache[2] || (_cache[2] = createBaseVNode("div", { class: "text-white text-2xl" }, "🎯", -1)),
-          _cache[3] || (_cache[3] = createBaseVNode("h1", { class: "text-white text-2xl font-bold" }, "抽獎囉！", -1)),
-          createBaseVNode("nav", _hoisted_5, [
-            createVNode(_component_router_link, {
-              to: "/",
-              class: "text-white hover:text-blue-200 mr-4 font-medium transition-colors",
-              "active-class": "underline"
-            }, {
-              default: withCtx(() => _cache[0] || (_cache[0] = [
-                createTextVNode(" 自訂抽獎模式 ")
-              ])),
-              _: 1,
-              __: [0]
-            }),
-            createVNode(_component_router_link, {
-              to: "/restaurant",
-              class: "text-white hover:text-blue-200 font-medium transition-colors",
-              "active-class": "underline"
-            }, {
-              default: withCtx(() => _cache[1] || (_cache[1] = [
-                createTextVNode(" 今天要吃什麼 ")
-              ])),
-              _: 1,
-              __: [1]
-            })
-          ])
-        ])
-      ])
-    ]),
+    _cache[0] || (_cache[0] = createStaticVNode("<header class=\"bg-blue-400 shadow-lg\"><div class=\"container mx-auto lg:max-w-(--breakpoint-lg) px-3 md:px-6 py-4\"><div class=\"flex items-center gap-3\"><div class=\"text-white text-2xl\">🎯</div><h1 class=\"text-white text-2xl font-bold\">今天要吃什麼？</h1><nav class=\"ml-6\"></nav></div></div></header>", 1)),
     createVNode(_component_router_view),
-    _cache[4] || (_cache[4] = createStaticVNode("<footer class=\"bg-gray-800 text-white mt-auto\"><div class=\"container mx-auto lg:max-w-(--breakpoint-lg) px-3 md:px-6 py-8\"><div class=\"text-center\"><div class=\"flex items-center justify-center gap-2 mb-4\"><div class=\"text-2xl\">🎯</div><h3 class=\"text-xl font-bold\">Prize Draw</h3></div><p class=\"text-gray-400 text-sm mb-6\"> The ultimate tool for fair and exciting prize drawings. Create your list, draw winners, and celebrate! </p><p class=\"text-gray-400 text-sm\"> © 2025 Prize Draw. All rights reserved. </p></div></div></footer>", 1))
+    _cache[1] || (_cache[1] = createStaticVNode("<footer class=\"bg-gray-800 text-white mt-auto\"><div class=\"container mx-auto lg:max-w-(--breakpoint-lg) px-3 md:px-6 py-8\"><div class=\"text-center\"><div class=\"flex items-center justify-center gap-2 mb-4\"><div class=\"text-2xl\">🎯</div><h3 class=\"text-xl font-bold\">Prize Draw</h3></div><p class=\"text-gray-400 text-sm mb-6\"> The ultimate tool for fair and exciting prize drawings. Create your list, draw winners, and celebrate! </p><p class=\"text-gray-400 text-sm\"> © 2025 Prize Draw. All rights reserved. </p></div></div></footer>", 1))
   ]))
 }
 const App = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render]]);
-
-const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: () => __vitePreload(() => import('./Home-DldcOLXi.js'),true              ?[]:void 0)
-  },
-  // Example of lazy loading a component
-  {
-    path: "/restaurant",
-    name: "Restaurant",
-    component: () => __vitePreload(() => import('./Restaurant-CmSF8aTd.js'),true              ?[]:void 0)
-  }
-];
-const router = createRouter({
-  history: createWebHistory("/prize-draw/"),
-  routes
-});
 
 const app = createApp(App);
 app.use(router);
 app.mount('#app');
 
-export { Fragment as F, _export_sfc as _, createBaseVNode as a, createCommentVNode as b, createElementBlock as c, createStaticVNode as d, onMounted as e, computed as f, renderList as g, createVNode as h, createBlock as i, openBlock as o, ref as r, toDisplayString as t, vModelText as v, withDirectives as w };
+export { Fragment as F, _export_sfc as _, createBaseVNode as a, createCommentVNode as b, createElementBlock as c, openBlock as o, renderList as r, toDisplayString as t };
