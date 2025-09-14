@@ -75,7 +75,7 @@
 
               <div
                 class="flex justify-between items-center text-sm text-gray-600 mb-4"
-              ></div>
+              >地址：{{restaurant.address}}</div>
 
               <!-- Action Button -->
               <button
