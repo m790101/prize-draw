@@ -5,22 +5,22 @@
       <div class="container mx-auto lg:max-w-(--breakpoint-lg) px-3 md:px-6 py-4">
         <div class="flex items-center gap-3">
           <div class="text-white text-2xl">🎯</div>
-          <h1 class="text-white text-2xl font-bold">抽獎囉！</h1>
+          <h1 class="text-white text-2xl font-bold">今天要吃什麼？</h1>
           <nav class="ml-6">
-            <router-link 
+            <!-- <router-link 
               to="/" 
               class="text-white hover:text-blue-200 mr-4 font-medium transition-colors"
               active-class="underline"
             >
               自訂抽獎模式
-            </router-link>
-            <router-link 
+            </router-link> -->
+            <!-- <router-link 
               to="/restaurant" 
               class="text-white hover:text-blue-200 font-medium transition-colors"
               active-class="underline"
             >
               今天要吃什麼
-            </router-link>
+            </router-link> -->
           </nav>
         </div>
       </div>
