@@ -8056,7 +8056,7 @@ const routes = [
     path: "/",
     name: "Home",
     // component: () => import('../views/Home.vue')
-    component: () => __vitePreload(() => import('./Restaurant-1szV2lQR.js'),true              ?[]:void 0)
+    component: () => __vitePreload(() => import('./Restaurant-BWacnSAp.js'),true              ?[]:void 0)
   }
   // Example of lazy loading a component
   // {
@@ -8088,9 +8088,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_router_view = resolveComponent("router-view");
 
   return (openBlock(), createElementBlock("div", _hoisted_1, [
-    _cache[0] || (_cache[0] = createStaticVNode("<header class=\"bg-blue-400 shadow-lg\"><div class=\"container mx-auto lg:max-w-(--breakpoint-lg) px-3 md:px-6 py-4\"><div class=\"flex items-center gap-3\"><div class=\"text-white text-2xl\">🎯</div><h1 class=\"text-white text-2xl font-bold\">今天要吃什麼？</h1><nav class=\"ml-6\"></nav></div></div></header>", 1)),
+    _cache[0] || (_cache[0] = createStaticVNode("<header class=\"bg-blue-400 shadow-lg\"><div class=\"container mx-auto lg:max-w-(--breakpoint-lg) px-3 md:px-6 py-4\"><div class=\"flex items-center gap-3\"><div class=\"text-white text-2xl\">🎯</div><h1 class=\"text-white text-2xl font-bold\">隨機台北餐廳抽獎</h1><nav class=\"ml-6\"></nav></div></div></header>", 1)),
     createVNode(_component_router_view),
-    _cache[1] || (_cache[1] = createStaticVNode("<footer class=\"bg-gray-800 text-white mt-auto\"><div class=\"container mx-auto lg:max-w-(--breakpoint-lg) px-3 md:px-6 py-8\"><div class=\"text-center\"><div class=\"flex items-center justify-center gap-2 mb-4\"><div class=\"text-2xl\">🎯</div><h3 class=\"text-xl font-bold\">Prize Draw</h3></div><p class=\"text-gray-400 text-sm mb-6\"> The ultimate tool for fair and exciting prize drawings. Create your list, draw winners, and celebrate! </p><p class=\"text-gray-400 text-sm\"> © 2025 Prize Draw. All rights reserved. </p></div></div></footer>", 1))
+    _cache[1] || (_cache[1] = createStaticVNode("<footer class=\"bg-gray-800 text-white mt-auto\"><div class=\"container mx-auto lg:max-w-(--breakpoint-lg) px-3 md:px-6 py-8\"><div class=\"text-center\"><div class=\"flex items-center justify-center gap-2 mb-4\"><div class=\"text-2xl\">🎯</div><h3 class=\"text-xl font-bold\">隨機台北餐廳抽獎</h3></div><p class=\"text-gray-400 text-sm mb-6\"> The ultimate tool for fair and exciting prize drawings. Create your list, draw winners, and celebrate! </p><p class=\"text-gray-400 text-sm\"> © 2025 Prize Draw. All rights reserved. </p></div></div></footer>", 1))
   ]))
 }
 const App = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render]]);
