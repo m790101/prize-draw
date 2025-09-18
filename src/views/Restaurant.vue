@@ -3,12 +3,9 @@
     <div class="max-w-6xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-8">
-        <h1 class="text-4xl font-bold text-gray-800 mb-2">
-          🍽️ 今天要吃什麼？ 
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">
+            🍽️ 今天要吃什麼？
         </h1>
-        <p class="text-lg text-gray-600">
-            不知道要吃什麼？那用抽的來決定吧！
-        </p>
       </div>
 
       <!-- Draw Button -->
@@ -17,7 +14,7 @@
           @click="startDraw"
           class="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out"
         >
-          🎲 抽獎囉!（目前只限定大安區） 
+          🎲 按我抽餐廳囉!（目前只限定台北大安區） 
         </button>
       </div>
 

@@ -5,7 +5,7 @@
       <div class="container mx-auto lg:max-w-(--breakpoint-lg) px-3 md:px-6 py-4">
         <div class="flex items-center gap-3">
           <div class="text-white text-2xl">🎯</div>
-          <h1 class="text-white text-2xl font-bold">今天要吃什麼？</h1>
+          <h1 class="text-white text-2xl font-bold">隨機台北餐廳抽獎</h1>
           <nav class="ml-6">
             <!-- <router-link 
               to="/" 
@@ -35,7 +35,7 @@
         <div class="text-center">
           <div class="flex items-center justify-center gap-2 mb-4">
             <div class="text-2xl">🎯</div>
-            <h3 class="text-xl font-bold">Prize Draw</h3>
+            <h3 class="text-xl font-bold">隨機台北餐廳抽獎</h3>
           </div>
           <p class="text-gray-400 text-sm mb-6">
             The ultimate tool for fair and exciting prize drawings. Create your list, draw winners, and celebrate!
