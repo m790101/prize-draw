@@ -16,6 +16,7 @@ export default defineConfig({
   server: {
     port: 5174,
     cors: true,
+    // allowedHosts:true // for debug
   },
   resolve: {
     alias: {
