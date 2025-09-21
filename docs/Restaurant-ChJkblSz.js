@@ -1,4 +1,4 @@
-import { _ as _export_sfc, c as createElementBlock, a as createBaseVNode, b as createCommentVNode, F as Fragment, r as renderList, t as toDisplayString, o as openBlock } from './index-DrbJh3w2.js';
+import { _ as _export_sfc, c as createElementBlock, a as createBaseVNode, b as createCommentVNode, F as Fragment, r as renderList, t as toDisplayString, o as openBlock } from './index-CboCbhbA.js';
 
 function bind(fn, thisArg) {
   return function wrap() {
@@ -3812,7 +3812,7 @@ const axiosClient = {
 const drawRestaurants= async (options) => {
   try {
     const result = await axiosClient.post("/restaurant/draw", options);
-    return result.data;
+    return result?.data;
   } catch (error) {
     console.log("error api", error);
     return error;
@@ -3846,8 +3846,8 @@ const _sfc_main = {
       this.showResults = true;
     },
     selectRestaurant(restaurant) {
-      const googleMapsUrl = `https://www.google.com/maps/place/?q=place_id:${restaurant.placeId}`;
-      window.open(googleMapsUrl, "_blank");
+      const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${restaurant.name}&query_place_id=${restaurant.placeId}`;
+      window.open(mapsUrl, "_blank");
     },
     closeModal() {
       this.selectedRestaurant = null;
@@ -3978,6 +3978,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ]))
 }
-const Restaurant = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__scopeId',"data-v-0dbbbb1b"]]);
+const Restaurant = /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__scopeId',"data-v-8f86f379"]]);
 
 export { Restaurant as default };

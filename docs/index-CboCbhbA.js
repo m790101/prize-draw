@@ -8056,7 +8056,7 @@ const routes = [
     path: "/",
     name: "Home",
     // component: () => import('../views/Home.vue')
-    component: () => __vitePreload(() => import('./Restaurant-BWacnSAp.js'),true              ?[]:void 0)
+    component: () => __vitePreload(() => import('./Restaurant-ChJkblSz.js'),true              ?[]:void 0)
   }
   // Example of lazy loading a component
   // {
