@@ -144,8 +144,8 @@ export default {
       this.showResults = true;
     },
     selectRestaurant(restaurant) {
-      const googleMapsUrl = `https://www.google.com/maps/place/?q=place_id:${restaurant.placeId}`;
-      window.open(googleMapsUrl, "_blank");
+      const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${restaurant.name}&query_place_id=${restaurant.placeId}`;
+      window.open(mapsUrl, "_blank");
     },
     closeModal() {
       this.selectedRestaurant = null;
